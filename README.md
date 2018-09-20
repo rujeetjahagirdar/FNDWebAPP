@@ -1,2 +1,2 @@
-# FDNWebAPP
+# FNDWebAPP
 Fake News Detection Web App
