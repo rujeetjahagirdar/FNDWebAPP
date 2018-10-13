@@ -28,7 +28,6 @@ def index(request):
         if form.is_valid():
             msg=request.POST.get('message')
             li=tok1(msg)
-            #li1=dan(li,msg)
             return render(request, 'db.html',{'dic1': li})
     else:
         form = ContactForm()
@@ -45,10 +44,11 @@ def tok1(msg):
     a=[i for i in a if i not in stop]
     er = EventRegistry(apiKey = "e010e4f7-343c-49d5-893d-63d4c2cfd487")
     q = QueryArticlesIter(keywords= QueryItems.OR(a),lang=["eng"],keywordsLoc="title")
-    b=q.execQuery(er, sortBy = "rel", maxItems =1 )
+    b=q.execQuery(er, sortBy = "rel", maxItems =50 )
     for article in b:
              if(article['source']['uri'] in repnews):
                 if article['title'] not in li:
+                    print(article['title'])
                     lis.append(article['title'])
     for i in range(len(lis)):
         a=datatxt.sim(msg,lis[i])
