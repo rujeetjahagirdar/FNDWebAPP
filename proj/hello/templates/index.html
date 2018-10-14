@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+  <div class="container">
+    
+    <h1>Fake News Prediction</h1>
+    <p>By Abhishek and Rujeet</p>
+    
+  </div>
+
+</div>
+  
+<form method="post">
+  {% csrf_token %}
+  
+    {{ form }}
+
+  
+  <button type="submit">Submit</button>
+</form>
+
+
+{% endblock %}
