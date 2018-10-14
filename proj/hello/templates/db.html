@@ -1,14 +1,32 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 {% block content %}
   <div class="container">
 
 
 <h2>Page View Report</h2>
 
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">Title</th>
+			<th scope="col">Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for i,v in dict1.items %}
+			<tr>
+				<td><a href="{{v.url}}" target="_blank">{{v.title}}</a></td>
+				<td>{{v.date}}</td>
+			</tr>
+		{%endfor%}
+	</tbody>
+</table>
 <ul>
-<li>Headlines::{{dic1}}</li>
+	{# {{dict1['968474736']}} #}
+	
 </ul>
 </div>
 
