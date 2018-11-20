@@ -47,15 +47,16 @@ def tok1(msg):
     tokenizer = RegexpTokenizer(r'\w+')
     a=tokenizer.tokenize(msg)
     stop = stopwords.words('english') + list(string.punctuation)
-    a=[i for i in a if i not in stop]                                           #removed stop words from user query
+    a = [i for i in a if i not in stop]                                           #removed stop words from user query
     er = EventRegistry(apiKey = "e010e4f7-343c-49d5-893d-63d4c2cfd487")
     q = QueryArticlesIter(keywords= QueryItems.OR(a),lang=["eng"],keywordsLoc="title")
-    b=q.execQuery(er, sortBy = "rel", maxItems =50 )
+    b = q.execQuery(er, sortBy = "rel", maxItems = 30)
     # for articles in b:
     #      articlesDict['id']=[articles['title'],articles['source']]
     #      # print(articlesDict)                                                      #query is executed on EventRegistry
     for article in b:
-        if(article['source']['uri'] in repnews and (datatxt.sim(msg,article['title'])['similarity']>=0.60)): 
+        if(article['source']['uri'] in repnews):# and
+        #if (datatxt.sim(msg,article['title'])['similarity']>=0.60): 
             print(article['title'])
             articlesDict[article['uri']]={'id':article['uri'],'title':article['title'],'source':article['source'],'url':article['url'],'date':article['date']}                        #filtered outed articals from reputed source
     #         articlesDict[article['uri']]={'title':article['title'],'source':article['source']}

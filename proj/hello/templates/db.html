@@ -12,6 +12,7 @@
 	<thead>
 		<tr>
 			<th scope="col">Title</th>
+			<th scope="col">Source</th>
 			<th scope="col">Date</th>
 		</tr>
 	</thead>
@@ -19,15 +20,13 @@
 		{% for i,v in dict1.items %}
 			<tr>
 				<td><a href="{{v.url}}" target="_blank">{{v.title}}</a></td>
+				<td>{{v.source.uri}}</td>
+				<td>{{v.relevance}}</td>
 				<td>{{v.date}}</td>
 			</tr>
 		{%endfor%}
 	</tbody>
 </table>
-<ul>
-	{# {{dict1['968474736']}} #}
-	
-</ul>
 </div>
 
 {% endblock %}
